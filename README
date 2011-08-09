@@ -1,0 +1,53 @@
+EvolveJS is a small javascript library for implementing Genetic Algorithms.
+
+The code can be used under either the MIT License or the GNU General Public License Version 2. The code base should come with a copy of both of these.
+
+
+I. Configuration
+
+The core of EvolveJS is in /lib/environment.js - this is a javascript module that is used to drive the genetic algorithm. There are a few steps needed in order to configure the Environment. The first is to configure it. There are a few options that can be set by calling Environment.configure with an array as an argument containing the following as the keys:
+
+name:
+  The name of the environment, used for debugging purposes.
+
+populationSize:
+  The number of individuals per generations. Required.
+
+mutability:
+  The chance of a mutation occuring during mating.  Must be between 0 and 1 (exclusive). Required.
+
+populationDieOff:
+  The percent of the population that dies off each generation. Must be between 0 and 1 (exclusive). Required.
+
+generations:
+  The maximum number of generations that the algorithm will process. Must be greater than 0. Required. 
+
+pruneEqualFitness:
+  This flag's default is true. It will consider different individuals with the same fitness as equivalent individuals, and only keep the first occurence. If set to false it will not prune individuals with equivalent fitnesses.
+
+Individual:
+  This argument is capitalized and it refers to the Object of the individual that this Genetic Algorithm is going to use. There can only be one Individual object. The individual object must have the following variables: chromosome, chromosomeLength; and it must have the function mate that returns another individual.
+
+inhabitants: 
+  This argument can be overriden if the user wants to specify an initial population.
+
+fitnessFunction:
+  This is a function that must be overriden. It takes in an individual as it's argument and returns the fitness of that individual. Required.
+
+beforeGeneration:
+  This is a function callback that is called before every generation's fitness is computed. Required for iterative mode functionality.
+
+afterGeneration:
+  This is a function callback that is called after every generation's fitness is computed. Required for iterative mode functionality.
+
+generation:
+  This is a function that is called in iterative mode after initialization. This will rarely need to be overridden.
+
+II. Modes 
+  There are two modes of processing the genetic algorithms. Iterative and Automatic.
+
+Iterative mode:
+   After calling Environment.configure, iterative mode is initialized by calling Environment.init. beforeGeneration and afterGeneration are callbacks for this mode - they are used for some sort of visualization between generations.
+
+Automatic mode:
+   After calling Environment.configure, automatic mode is initialized calling Environment.run(); This will return the final generation after the genetic algorithm has been computed. The individuals are sorted by fitness, so the first index would be the most fit individual in that genetic algorithm.
