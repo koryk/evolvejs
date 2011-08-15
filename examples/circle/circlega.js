@@ -81,14 +81,10 @@ Environment.Individual = function(){
 }
 
 Environment.beforeGeneration = function(generation) {
-        console.log('Generation: ' + generation);
 	drawMap(generation);
 }
 
 Environment.afterGeneration = function(generation) {
-        for(individual in Environment.inhabitants){
-               console.log(Environment.inhabitants[individual].fitness);
-	}
 	Environment.fitnessFunction(Environment.inhabitants[0],true);
 	setTimeout("Environment.generation()",100);
 };
