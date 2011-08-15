@@ -27,9 +27,7 @@ $(document).ready(function(){
                         ctx.arc(35 + (60*(spotx)), 30 + (60*(spoty)), 5, 0, Math.PI*2, true);
                         ctx.stroke();
                         if (checkForWin(currentGame.gameState, 1)){
-
                             setText("You Win! <a href='javascript:startGame()'>play again</a>");
-                            setTimeout("Environment.generation()",6000);
                         }
                         else {
                             currentGame.turn = 0;
@@ -257,9 +255,7 @@ var TicTacToe = function(individual) {
         var ctx = document.getElementById('gacanvas');
         ctx = ctx.getContext('2d');
         if (this.numTurns >= turns.length){
-
             setText("You Tie! <a href='javascript:startGame()'>play again</a>", 50,50);
-            setTimeout("Environment.generation()",6000);
             return;
         }
         var turnOptions = turns[this.numTurns];
@@ -298,7 +294,12 @@ var TicTacToe = function(individual) {
                             setTimeout("Environment.generation()",6000);
                 }
                 this.turn = 1;
+                
                 break;
+        }
+        if (this.numTurns >= turns.length-1){
+            setText("You Tie! <a href='javascript:startGame()'>play again</a>", 50,50);
+            return;
         }
     }
     this.gameState = [
