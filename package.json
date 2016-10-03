@@ -1,0 +1,28 @@
+{
+  "name": "evolvejs",
+  "version": "1.0.0",
+  "description": "Small Genetic Algorithm Library for Javascript http://korykirk.com",
+  "main": "lib/environment.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koryk/evolvejs.git"
+  },
+  "keywords": [
+    "Genetic",
+    "Algorithm",
+    "GA",
+    "evolve"
+  ],
+  "author": "Kory Kirk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koryk/evolvejs/issues"
+  },
+  "homepage": "https://github.com/koryk/evolvejs#readme"
+}
